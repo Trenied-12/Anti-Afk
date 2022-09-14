@@ -1,0 +1,749 @@
+package publicAntiAfk; // Needs to be changed to the name of your file! (Example: "package Main;") 
+
+import java.awt.AWTException;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Robot;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.util.Random;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class AntiAfk extends JFrame implements ActionListener  {
+	
+	public static void main(String[] args) {
+	
+	AntiAfk JFrame = new AntiAfk(); 
+
+}
+	
+	
+	JFrame frame; 
+	JButton Stop; 
+	JLabel l;
+	JLabel l1;
+	JLabel l2; 
+	JLabel l3; 
+	JLabel l4; 
+	JPanel DM; 
+	JLabel label;
+	JButton p3;
+	JButton p5; 
+	JButton p8; 
+	JButton p0; 
+	JButton TD3; 
+	JButton TD5; 
+	JButton TD8; 
+	JButton DL; 
+	JButton Start; 
+	int counter = 1; 
+	int counter2 = 1;
+	int y = 120;
+	int y1 = 230;
+	
+	String PN7 = "e"; 
+	String PN9 = "i"; 
+	String PN6 = "d"; 
+	String PN11 = "e"; 
+	String PN12 = "r"; 
+	String PN1 = "7"; 
+	String PN2 = "7"; 
+	String PN3 = "5"; 
+	String PN13 = "T"; 
+	String PN10 = "n"; 
+	String PN4 = "5"; 
+	String PN5 = "#"; 
+	
+	int Durchgänge = 5; 
+	
+	boolean StartBot = false; 
+	boolean FirstRound = true; 
+	
+	int min = 1; 
+	int max = 8; 
+	
+	AntiAfk() {
+		
+		DM = new JPanel(); 
+		DM.setBounds(0, 0, 10000, 10000);
+		DM.setBackground(Color.DARK_GRAY);
+		
+		l = new JLabel();
+		l.setText("An Anti Afk for every game!");
+		l.setFont(new Font("",Font.BOLD, 25));
+		l.setBounds(125, -25, 1000, 100);
+		
+		l1 = new JLabel();
+		l1.setText("Choose how long keys should be pressed and how long pauses should be: ");
+		l1.setFont(new Font("",Font.BOLD, 15));
+		l1.setBounds(30, 5, 1000, 100);
+		
+		l4 = new JLabel();
+		l4.setText("Programmer (Discord): " + PN13 + PN12 + PN11 + PN10 + PN9 + PN7 + PN6 + PN5 + PN4 + PN3 + PN2 + PN1);
+		l4.setFont(new Font("",Font.BOLD, 13));
+		l4.setForeground(Color.white);
+		l4.setBounds(165, 25, 1000, 100);
+		
+		l2 = new JLabel();
+		l2.setText("Length of breaks:");
+		l2.setFont(new Font("",Font.BOLD, 20));
+		l2.setBounds(200, 45, 1000, 100);
+		
+		l3 = new JLabel();
+		l3.setText("Length of key press:");
+		l3.setFont(new Font("",Font.BOLD, 20));
+		l3.setBounds(190, 155, 1000, 100);
+		
+		label = new JLabel();
+		label.setText("");
+		label.setBounds(10, 0, 1000, 100);
+		
+		Start = new JButton(); 
+		Start.setText("Start Bot");
+		Start.setFont(new Font("",Font.BOLD, 20));
+		Start.setBounds(90, 300, 400, 50);
+		Start.addActionListener(this);
+		Start.setFocusable(false);
+		Start.setForeground(Color.DARK_GRAY);
+		Start.setBackground(Color.white);
+		
+		Stop = new JButton(); 
+		Stop.setText("Stop Bot");
+		Stop.setFont(new Font("",Font.BOLD, 20));
+		Stop.setBounds(90, 300, 400, 50);
+		Stop.addActionListener(this);
+		Stop.setFocusable(false);
+		Stop.setForeground(Color.DARK_GRAY);
+		Stop.setBackground(Color.white);
+		Stop.setVisible(false); 
+		
+		p0 = new JButton(); 
+		p0.setText("0 Sek.");
+		p0.setBounds(75, y, 80, 50);
+		p0.addActionListener(this);
+		p0.setFocusable(false);
+		p0.setFont(new Font("",Font.BOLD, 15));
+		p0.setForeground(Color.DARK_GRAY);
+		p0.setBackground(Color.white);
+		
+		p3 = new JButton(); 
+		p3.setText("1 Sek.");
+		p3.setBounds(190, y, 80, 50);
+		p3.addActionListener(this);
+		p3.setFocusable(false);
+		p3.setFont(new Font("",Font.BOLD, 15));
+		p3.setForeground(Color.DARK_GRAY);
+		p3.setBackground(Color.white);
+		
+		p5 = new JButton(); 
+		p5.setText("3 Sek.");
+		p5.setBounds(305, y, 80, 50);
+		p5.addActionListener(this);
+		p5.setFocusable(false);
+		p5.setFont(new Font("",Font.BOLD, 15));
+		p5.setForeground(Color.DARK_GRAY);
+		p5.setBackground(Color.white);
+
+		p8 = new JButton(); 
+		p8.setText("5 Sek.");
+		p8.setBounds(420, y, 80, 50);
+		p8.addActionListener(this);
+		p8.setFocusable(false);
+		p8.setFont(new Font("",Font.BOLD, 15));
+		p8.setForeground(Color.DARK_GRAY);
+		p8.setBackground(Color.white);
+
+		TD3 = new JButton(); 
+		TD3.setText("3 Sek.");
+		TD3.setBounds(125, y1, 80, 50);
+		TD3.addActionListener(this);
+		TD3.setFocusable(false);
+		TD3.setFont(new Font("",Font.BOLD, 15));
+		TD3.setForeground(Color.DARK_GRAY);
+		TD3.setBackground(Color.white);
+
+		TD5 = new JButton(); 
+		TD5.setText("5 Sek.");
+		TD5.setBounds(250, y1, 80, 50);
+		TD5.addActionListener(this);
+		TD5.setFocusable(false);
+		TD5.setFont(new Font("",Font.BOLD, 15));
+		TD5.setForeground(Color.DARK_GRAY);
+		TD5.setBackground(Color.white);
+
+		TD8 = new JButton(); 
+		TD8.setText("8 Sek.");
+		TD8.setBounds(375, y1, 80, 50);
+		TD8.addActionListener(this);
+		TD8.setFocusable(false);
+		TD8.setFont(new Font("",Font.BOLD, 15));
+		TD8.setForeground(Color.DARK_GRAY);
+		TD8.setBackground(Color.white);
+		
+		l.setForeground(Color.white);
+		l1.setForeground(Color.white);
+		l2.setForeground(Color.white);
+		label.setForeground(Color.white);
+		l3.setForeground(Color.white);
+		
+		frame = new JFrame(); 
+		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		frame.setLayout(null);
+		frame.setSize(600, 400);
+		frame.setVisible(true);
+		frame.setLocationRelativeTo(null);
+		frame.add(l1); 
+		frame.add(l2); 
+		frame.add(l4); 
+		frame.add(p0);
+		frame.add(p3);
+		frame.add(p5);
+		frame.add(p8);
+		frame.add(TD3);
+		frame.add(TD5);
+		frame.add(TD8);
+		frame.add(Start);
+		frame.add(Stop);
+		frame.add(l3); 
+		frame.setResizable(false);
+		frame.setTitle("Anti Afk");
+		frame.add(l);
+		frame.add(label);	
+
+		frame.add(DM);
+		
+		
+		for(int i = 0; i < Durchgänge; i ++) {
+			
+			if (StartBot == true) {
+				
+				System.out.println("Started");
+				
+				if (FirstRound == true) {
+					
+					System.out.println("FirstRound");
+				
+				try {
+					Robot StartRobot = new Robot();
+					
+					StartRobot.delay(8000);
+					
+				} catch (AWTException e1) {
+					e1.printStackTrace();
+				} 
+				
+				FirstRound = false; 
+				
+				}
+					
+				Random Randomnumber = new Random();
+				int number = min + Randomnumber.nextInt(max);
+						 
+		if(1==number){
+							 
+			System.out.println("1");
+			
+							 try {
+								Robot WRobot = new Robot();
+								
+								WRobot.delay(Pause);
+								
+								WRobot.keyPress(KeyEvent.VK_W);
+								
+								WRobot.delay(TD);
+								
+								WRobot.keyRelease(KeyEvent.VK_W);
+								
+								WRobot.mouseMove(500, 100);
+									
+									Random dice1 = new Random();
+									int number1;
+									 
+									 for(int counter1=1; counter1<=2;counter1++) {
+										 number1 = 1+dice1.nextInt(2);
+										 
+										 if(1==number1) {
+
+												WRobot.mouseWheel(1);
+											 
+										 }
+										 
+										 if(2==number1) {
+
+												WRobot.mouseWheel(-1);
+											 
+										 }
+										 
+									 }
+								
+								
+							} catch (AWTException e1) {
+								e1.printStackTrace();
+							}
+							 
+						 }
+						 
+		if(2==number) {
+			System.out.println("2");
+								 
+							     try {
+									Robot SRobot = new Robot();
+									
+									SRobot.delay(Pause);
+									
+									SRobot.keyPress(KeyEvent.VK_S);
+									
+									SRobot.delay(TD);
+									
+									SRobot.keyRelease(KeyEvent.VK_S);
+									
+									SRobot.mouseMove(500, 200);
+										
+										Random dice2 = new Random();
+										int number2;
+										 
+										 for(int counter2=1; counter2<=2;counter2++) {
+											 number2 = 1+dice2.nextInt(2);
+											 
+											 if(1==number2) {
+
+													SRobot.mouseWheel(1);
+												 
+											 }
+											 
+											 if(2==number2) {
+
+													SRobot.mouseWheel(-1);
+												 
+											 }
+											 
+										 }
+									
+									
+								} catch (AWTException e1) {
+									e1.printStackTrace();
+								} 
+							     
+							     
+							 
+								 
+						 }
+						
+		if(3==number) {
+			System.out.println("3");
+								 
+								 try {
+									Robot ARobot = new Robot();
+									
+									ARobot.delay(Pause);
+									
+									ARobot.keyPress(KeyEvent.VK_A);
+									
+									ARobot.delay(TD);
+									
+									ARobot.keyRelease(KeyEvent.VK_A);
+									
+									ARobot.mouseMove(500, 300);
+									
+									Random dice3 = new Random();
+									int number3;
+									 
+									 for(int counter3=1; counter3<=2;counter3++) {
+										 number3 = 1+dice3.nextInt(2);
+										 
+										 if(1==number3) {
+
+												ARobot.mouseWheel(1);
+											 
+										 }
+										 
+										 if(2==number3) {
+
+												ARobot.mouseWheel(-1);
+											 
+										 }
+										 
+									 }
+									
+								} catch (AWTException e1) {
+									e1.printStackTrace();
+								}
+								 
+							 
+								 
+						 }
+			
+		if(4==number) {
+			System.out.println("4");
+							     
+							     try {
+									Robot DRobot = new Robot();
+									
+									DRobot.delay(Pause);
+									
+									DRobot.keyPress(KeyEvent.VK_D);
+									
+									DRobot.delay(TD);
+									
+									DRobot.keyRelease(KeyEvent.VK_D);
+									
+									DRobot.mouseMove(500, 400);
+									
+									Random dice4 = new Random();
+									int number4;
+									 
+									 for(int counter4=1; counter4<=2;counter4++) {
+										 number4 = 1+dice4.nextInt(2);
+										 
+										 if(1==number4) {
+
+												DRobot.mouseWheel(1);
+											 
+										 }
+										 
+										 if(2==number4) {
+
+												DRobot.mouseWheel(-1);
+											 
+										 }
+										 
+									 }
+									
+								} catch (AWTException e1) {
+									e1.printStackTrace();
+								} 
+							     
+							 
+								 
+		}
+						
+					    
+		if(5==number) {
+			System.out.println("5");
+							     
+							     try {
+									Robot SPACERobot = new Robot();
+									
+									SPACERobot.delay(Pause);
+									
+									SPACERobot.keyPress(KeyEvent.VK_SPACE);
+									
+									SPACERobot.delay(500);
+									
+									SPACERobot.keyRelease(KeyEvent.VK_SPACE);
+									
+			                        SPACERobot.delay(500);
+									
+									SPACERobot.keyPress(KeyEvent.VK_SPACE);
+									
+									SPACERobot.delay(500);
+									
+									SPACERobot.keyRelease(KeyEvent.VK_SPACE);
+									
+			                        SPACERobot.delay(500);
+									
+									SPACERobot.keyPress(KeyEvent.VK_SPACE);
+									
+									SPACERobot.delay(500);
+									
+									SPACERobot.keyRelease(KeyEvent.VK_SPACE);
+									
+									SPACERobot.mouseMove(500, 500);
+									
+									Random dice5 = new Random();
+									int number5;
+									 
+									 for(int counter5=1; counter5<=2;counter5++) {
+										 number5 = 1+dice5.nextInt(2);
+										 
+										 if(1==number5) {
+
+												SPACERobot.mouseWheel(1);
+											 
+										 }
+										 
+										 if(2==number5) {
+
+												SPACERobot.mouseWheel(-1);
+											 
+										 }
+										 
+									 }
+									
+								} catch (AWTException e1) {
+									e1.printStackTrace();
+								} 
+							     
+							     
+							     
+							 
+								 
+						 }
+						
+		if(6==number) {
+			System.out.println("6");
+							     
+							     try {
+									Robot SHIFTRobot = new Robot();
+									
+									SHIFTRobot.delay(Pause);
+									
+									SHIFTRobot.keyPress(KeyEvent.VK_W);
+									SHIFTRobot.keyPress(KeyEvent.VK_SHIFT);
+					 				
+									SHIFTRobot.delay(TD);
+									
+									SHIFTRobot.keyRelease(KeyEvent.VK_W);
+									SHIFTRobot.keyRelease(KeyEvent.VK_SHIFT);
+									
+									SHIFTRobot.mouseMove(500, 600);
+									
+									Random dice6 = new Random();
+									int number6;
+									 
+									 for(int counter6=1; counter6<=2;counter6++) {
+										 number6 = 1+dice6.nextInt(2);
+										 
+										 if(1==number6) {
+
+												SHIFTRobot.mouseWheel(1);
+											 
+										 }
+										 
+										 if(2==number6) {
+
+												SHIFTRobot.mouseWheel(-1);
+											 
+										 }
+										 
+					 				 }
+									
+					   			} catch (AWTException e1) {
+									  e1.printStackTrace();
+								} 
+								 
+						}
+		
+		
+		if(7==number) {
+			
+			System.out.println("7");
+			
+			try {
+				Robot A_DRobot = new Robot();
+				
+				A_DRobot.delay(Pause);
+				
+				Random dice7 = new Random();
+				int number7;
+				 
+				 for(int counter7=1; counter7<=2;counter7++) {
+					 number7 = 1+dice7.nextInt(2);
+					 
+					 if(1==number7) {
+						 A_DRobot.keyPress(KeyEvent.VK_W);
+						 A_DRobot.keyPress(KeyEvent.VK_A);
+						 A_DRobot.delay(TD);
+						 A_DRobot.keyRelease(KeyEvent.VK_W);
+						 A_DRobot.keyRelease(KeyEvent.VK_A);
+					 }
+					 
+					 if(2==number7) {
+
+						 A_DRobot.keyPress(KeyEvent.VK_W);
+						 A_DRobot.keyPress(KeyEvent.VK_D);
+						 A_DRobot.delay(TD);
+						 A_DRobot.keyRelease(KeyEvent.VK_W);
+						 A_DRobot.keyRelease(KeyEvent.VK_D);
+						 
+					 }
+					 
+					 }
+				 
+				} catch (AWTException e1) {
+				  e1.printStackTrace();
+			} 
+		}
+		
+		if(8==number) {
+			
+			System.out.println("8");
+			
+			try {
+				Robot SA_DRobot = new Robot();
+				
+				SA_DRobot.delay(Pause);
+				
+				Random dice8 = new Random();
+				int number8;
+				 
+				 for(int counter8=1; counter8<=2;counter8++) {
+					 number8 = 1+dice8.nextInt(2);
+					 
+					 if(1==number8) {
+						 SA_DRobot.keyPress(KeyEvent.VK_S);
+						 SA_DRobot.keyPress(KeyEvent.VK_A);
+						 SA_DRobot.delay(TD);
+						 SA_DRobot.keyRelease(KeyEvent.VK_S);
+						 SA_DRobot.keyRelease(KeyEvent.VK_A);
+					 }
+					 
+					 if(2==number8) {
+						 SA_DRobot.keyPress(KeyEvent.VK_S);
+						 SA_DRobot.keyPress(KeyEvent.VK_D);
+						 SA_DRobot.delay(TD);
+						 SA_DRobot.keyRelease(KeyEvent.VK_S);
+						 SA_DRobot.keyRelease(KeyEvent.VK_D);
+					 }
+					 
+					 }
+				 
+				} catch (AWTException e1) {
+				  e1.printStackTrace();
+			} 
+		}
+		
+					 
+				
+			} else {
+				System.out.println("Stopped"); 
+			}
+			
+			
+			Durchgänge = Durchgänge + 1; 
+		}
+		
+	}
+	
+	
+	int Pause = 3000; 
+	int TD = 5000; 
+	int dali = 0; 
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		if(e.getSource() == Start) {	
+			
+			Stop.setBackground(Color.green);
+			Stop.setForeground(Color.black);
+			
+			StartBot = true; 
+			Start.setVisible(false);
+			Stop.setVisible(true);
+			
+			p3.setEnabled(false);
+			p5.setEnabled(false); 
+			p8.setEnabled(false);
+			p0.setEnabled(false);
+			
+			TD3.setEnabled(false);
+			TD5.setEnabled(false);
+			TD8.setEnabled(false); 
+			
+			if (Pause == 3000) {
+				p5.setBackground(Color.green);
+			}
+			
+			if (TD == 5000) {
+				TD5.setBackground(Color.green);
+			}
+			
+		}
+			
+		if(e.getSource() == Stop) {	
+			
+			Start.setBackground(Color.white);
+			Start.setForeground(Color.black);
+			
+			StartBot = false; 
+			Stop.setVisible(false);
+			Start.setVisible(true);
+			FirstRound = true; 
+			
+			p3.setBackground(Color.white);  
+			p5.setBackground(Color.white);  
+			p8.setBackground(Color.white);  
+			p0.setBackground(Color.white);  
+			
+			TD3.setBackground(Color.white);  
+			TD5.setBackground(Color.white);  
+			TD8.setBackground(Color.white);  
+			
+			Pause = 3000; 
+			TD = 5000; 
+			
+			p3.setEnabled(true);
+			p5.setEnabled(true); 
+			p8.setEnabled(true);
+			p0.setEnabled(true);
+			
+			TD3.setEnabled(true);
+			TD5.setEnabled(true);
+			TD8.setEnabled(true); 
+			
+		}
+		
+		if(e.getSource() ==p0) {
+			Pause = 1; 
+			p0.setBackground(Color.green);
+			p3.setBackground(Color.white);
+			p5.setBackground(Color.white);
+			p8.setBackground(Color.white);
+		}
+		
+		if(e.getSource() ==p3) {
+			Pause = 1000; 
+			p3.setBackground(Color.GREEN);
+			p5.setBackground(Color.white);
+			p8.setBackground(Color.white);
+			p0.setBackground(Color.white);
+		}
+		
+		if(e.getSource() ==p5) {
+			Pause = 3000; 
+			p3.setBackground(Color.white);
+			p5.setBackground(Color.GREEN);
+			p8.setBackground(Color.white);
+			p0.setBackground(Color.white);
+		}
+		
+		if(e.getSource() ==p8) {
+			Pause = 5000; 
+			p3.setBackground(Color.white);
+			p5.setBackground(Color.white);
+			p8.setBackground(Color.GREEN);
+			p0.setBackground(Color.white);
+		}
+		
+		if(e.getSource() ==TD3) {
+			TD = 3000; 
+			TD3.setBackground(Color.GREEN);
+			TD5.setBackground(Color.white);
+			TD8.setBackground(Color.white);
+		}
+		
+		if(e.getSource() ==TD5) {
+			TD = 5000; 
+			TD3.setBackground(Color.white);
+			TD5.setBackground(Color.GREEN);
+			TD8.setBackground(Color.white);
+		}
+		
+		if(e.getSource() ==TD8) {
+			TD = 8000; 
+			TD3.setBackground(Color.white);
+			TD5.setBackground(Color.white);
+			TD8.setBackground(Color.GREEN);
+		}
+		
+				}
+				 
+			}
+		
+		
