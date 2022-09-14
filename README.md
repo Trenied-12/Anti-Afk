@@ -5,4 +5,5 @@ An Anti Afk for every game!
 2. For the Anti Afk it is necessary to start the executable in admin mode!
 
 Important:
-In order for the Anti Afk to work, it is important that the standard keys are used to move (W, A, S, D/ Space/ Shift...)
+1. It can happen that the Anti Afk in game falls down somewhere or does something similar that could lead to death!
+2. In order for the Anti Afk to work, it is important that the standard keys are used to move (W, A, S, D/ Space/ Shift...)! 
